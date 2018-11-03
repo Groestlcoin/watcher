@@ -18,7 +18,7 @@ class Address(db.Model):
     def get_balance(self):
         """
         Get the current balance of this address
-        :return: balance in BTC
+        :return: balance in GRS
         """
         return self.balance / SATOSHI
 

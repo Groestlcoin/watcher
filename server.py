@@ -24,8 +24,8 @@ def withdrawal():
         "input_address": {"output_address": "address", "amount": btc_amount}
     }
 
-    Where input_address is the BTC address that has unspent funds.
-    Output address is the address to withdraw to and BTC amount is the amount
+    Where input_address is the GRS address that has unspent funds.
+    Output address is the address to withdraw to and GRS amount is the amount
     to be sent to output_address.
 
     :return:

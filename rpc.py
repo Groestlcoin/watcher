@@ -8,10 +8,10 @@ logger = logging.getLogger(__name__)
 
 class BTCRPCClient(object):
     """
-    RPC client for communicating with bitcoind.
+    RPC client for communicating with groestlcoind.
     """
 
-    def __init__(self, username, password, host='127.0.0.1', port='18332'):
+    def __init__(self, username, password, host='127.0.0.1', port='17766'):
         self.username = username
         self.password = password
         self.host = host
@@ -22,10 +22,10 @@ class BTCRPCClient(object):
 
     def _make_request(self, rpcmethod, *args):
         """
-        Handles formatting the request JSON that will be sent to bitcoind.
-        :param rpcmethod: The name of the RPC method to call on bitcoind
+        Handles formatting the request JSON that will be sent to groestlcoind.
+        :param rpcmethod: The name of the RPC method to call on groestlcoind
         :param args: Additional arguments for the method
-        :return: the deserialized JSON result of calling the RPC method on bitcoind
+        :return: the deserialized JSON result of calling the RPC method on groestlcoind
         """
         logger.debug('Args %s', args)
         payload = {'method': rpcmethod, 'params': args, 'id': 'BTCRPCClient', 'jsonrpc': '1.0'}
@@ -40,7 +40,7 @@ class BTCRPCClient(object):
 
     def getbestblockhash(self):
         """
-        Queries bitcoind for the tip of the blockchain hash
+        Queries groestlcoind for the tip of the blockchain hash
         :return: string hash of the tip of the block chain
         """
         resp_json = self._make_request('getbestblockhash')
@@ -48,14 +48,14 @@ class BTCRPCClient(object):
 
     def getblock(self, blockhash, verbosity=2):
         """
-        Queries bitcoind for the data about block :blockhash:
+        Queries groestlcoind for the data about block :blockhash:
 
         If verbosity is 0, returns a string that is serialized, hex-encoded data for block 'hash'.
         If verbosity is 1, returns an Object with information about block <hash>.
         If verbosity is 2, returns an Object with information about block <hash> and information about each transaction.
 
         :param blockhash: The hash of the block to lookup.
-        :param verbosity: How verbose the response from bitcoind should be.
+        :param verbosity: How verbose the response from groestlcoind should be.
         :return: The data for the block with hash :blockhash:
         """
 
@@ -121,12 +121,12 @@ class BTCRPCClient(object):
         Returns a list of unspent transaction data
         [
             {
-                "txid": "5ed28aedc8355214436f309f7115db75f3820b14ae7aff8edc9d45abb5c77e84",
-                "vout": 1,
-                "address": "n1ByWgeTeQacoRqBgzyoQaaSmHBcU7BGWQ",
-                "scriptPubKey": "76a914d7cba10239f8e6cc7fbdb68146fb1a53afc9637688ac",
-                "amount": 0.02165017,
-                "confirmations": 1174,
+                "txid": "029c2eb4fb8c582ee884057e0f5e0cb1cee78b1a838f2a01541d2b63e13985e4",
+                "vout": 0,
+                "address": "mzrXS5ZgeLyEGSQZeYFBbfs61ZQZfMJtkX",
+                "scriptPubKey": "76a9144d7a2c91ded4f5861ce46f98ba47c475debbfe3e88ac",
+                "amount": 0.0999377,
+                "confirmations": 35051,
                 "spendable": true,
                 "solvable": true,
                 "safe": true

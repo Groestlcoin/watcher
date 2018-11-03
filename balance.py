@@ -37,7 +37,7 @@ def handle_outputs(tx, addresses):
 
 
 def get_input(vin, client):
-    # Function to cache the most recent 1048576 transactions so we don't have to keep querying bitcoind
+    # Function to cache the most recent 1048576 transactions so we don't have to keep querying groestlcoind
     @lru_cache(1 << 20)
     def get_tx(txid):
         return client.gettx(txid)

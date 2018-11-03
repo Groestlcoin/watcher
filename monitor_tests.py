@@ -22,16 +22,16 @@ class MonitorTestCase(unittest.TestCase):
         self.context.pop()
 
     def test_checkpoint_none_existing(self):
-        checkpoint('0000000000000b669184e67005840bdea784ee87276cdbd02479019a4dc16ff7')
-        c = Checkpoint.query.filter_by(hash='0000000000000b669184e67005840bdea784ee87276cdbd02479019a4dc16ff7').one()
-        assert c.hash == '0000000000000b669184e67005840bdea784ee87276cdbd02479019a4dc16ff7'
+        checkpoint('00000082c779d1f4468f34946468c1c7ebabd147d359b5e218e999a0e911282f')
+        c = Checkpoint.query.filter_by(hash='00000082c779d1f4468f34946468c1c7ebabd147d359b5e218e999a0e911282f').one()
+        assert c.hash == '00000082c779d1f4468f34946468c1c7ebabd147d359b5e218e999a0e911282f'
 
     def test_checkpoint_existing(self):
-        c = Checkpoint(hash='0000000000000b669184e67005840bdea784ee87276cdbd02479019a4dc16ff7')
+        c = Checkpoint(hash='00000082c779d1f4468f34946468c1c7ebabd147d359b5e218e999a0e911282f')
         db.session.add(c)
         db.session.commit()
-        checkpoint('0000000000000a4013ee34b098e9731b232c268609c9308965b1159ba2b83a6c')
+        checkpoint('0000000b49a3b3d373838c3e1c14d294abdc31457b8d7f69ac0d3002a287f194')
 
         new_checkpoint = Checkpoint.query.filter_by(
-            hash='0000000000000a4013ee34b098e9731b232c268609c9308965b1159ba2b83a6c').one()
-        assert new_checkpoint.hash == '0000000000000a4013ee34b098e9731b232c268609c9308965b1159ba2b83a6c'
+            hash='0000000b49a3b3d373838c3e1c14d294abdc31457b8d7f69ac0d3002a287f194').one()
+        assert new_checkpoint.hash == '0000000b49a3b3d373838c3e1c14d294abdc31457b8d7f69ac0d3002a287f194'
